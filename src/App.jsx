@@ -1,29 +1,44 @@
 import './App.scss';
+// React
+import { useState } from "react";
 // Components
 import Container from 'react-bootstrap/Container';
 import NavigationBar from "./components/navigation/NavigationBar";
+import UsernameForm from "./components/forms/UsernameForm";
 import MessagesDisplay from "./components/displays/MessagesDisplay";
 import GroupForm from "./components/forms/GroupForm";
 import MessageForm from "./components/forms/MessageForm";
 
 function App() {
+  const [username, setUsername] = useState(null);
+
   return (
     <div id="app">
-      <NavigationBar/>
+      <NavigationBar username={username}/>
       
       <Container id="app-content">
-        <div id="messagesDisplay-wrapper">
-          <MessagesDisplay/>
-        </div>
+        {!username &&
+          <div id="usernameForm-wrapper">
+            <UsernameForm setUsername={setUsername}/>
+          </div>
+        }
 
-        <div id="groupForm-wrapper">
-          <GroupForm/>
-        </div>
+        {username && 
+          <>
+            <div id="messagesDisplay-wrapper">
+              <MessagesDisplay/>
+            </div>
 
-        <div id="messageForm-wrapper">
-          <MessageForm/>
-        </div>
-      </Container>
+            <div id="groupForm-wrapper">
+              <GroupForm/>
+            </div>
+
+            <div id="messageForm-wrapper">
+              <MessageForm/>
+            </div>
+          </>
+        }
+      </Container>     
     </div>
   )
 };
