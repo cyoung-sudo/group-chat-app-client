@@ -19,6 +19,12 @@ function App() {
       <Container id="app-content">
         {!username &&
           <div id="usernameForm-wrapper">
+            <div id="usernameForm-header">
+              <h1>Messaging Made Easy</h1>
+              <h4>Pick a username</h4>
+              <h4>Join a group</h4>
+              <h4>Start chatting</h4>
+            </div>
             <UsernameForm setUsername={setUsername}/>
           </div>
         }

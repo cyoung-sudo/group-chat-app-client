@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const NavigationBar = ({ username }) => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand>Group Chat</Navbar.Brand>
         
@@ -14,7 +14,7 @@ const NavigationBar = ({ username }) => {
           <>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-              <Nav id="nav-info" className="justify-content-end">
+              <Nav id="navbar-info" className="justify-content-end">
                 <div>Username: {username}</div>
                 <div>Group: ...</div>
               </Nav>

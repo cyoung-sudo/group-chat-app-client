@@ -1,4 +1,8 @@
-#nav-info {
+#navbar {
+  height: var(--navbar-height);
+}
+
+#navbar-info {
   > div {
     margin-left: 1rem;
     font-weight: 300;

@@ -13,7 +13,7 @@ const UsernameForm = ({ setUsername }) => {
     setUsername(name);
   }
 
-  return (
+  return (      
     <Form id="usernameForm" onSubmit={submitName}>
       <Form.Group>
         <Form.Control
@@ -21,7 +21,7 @@ const UsernameForm = ({ setUsername }) => {
           type="text"
           placeholder="Username" />
       </Form.Group>
-      
+
       <Button variant="primary" type="submit">
         Enter
       </Button>
