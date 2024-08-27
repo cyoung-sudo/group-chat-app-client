@@ -11,10 +11,21 @@ import MessageForm from "./components/forms/MessageForm";
 
 function App() {
   const [username, setUsername] = useState(null);
+  const [group, setGroup] = useState("");
+
+  const submitGroup = e => {
+    e.preventDefault();
+    // Check max length
+    if(group.length <= 30) {
+      console.log(group)
+    }
+  }
 
   return (
     <div id="app">
-      <NavigationBar username={username}/>
+      <NavigationBar 
+        username={username}
+        group={group}/>
       
       <Container id="app-content">
         {!username &&
@@ -36,7 +47,9 @@ function App() {
             </div>
 
             <div id="groupForm-wrapper">
-              <GroupForm/>
+              <GroupForm 
+                setGroup={setGroup}
+                submitGroup={submitGroup}/>
             </div>
 
             <div id="messageForm-wrapper">

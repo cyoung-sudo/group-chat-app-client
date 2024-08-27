@@ -1,12 +1,11 @@
 import "./NavigationBar.scss";
 // Bootstrap
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const NavigationBar = ({ username }) => {
+const NavigationBar = ({ username, group }) => {
   return (
-    <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
+    <Navbar id="navbar" expand="lg">
       <Container>
         <Navbar.Brand>Group Chat</Navbar.Brand>
         
@@ -14,10 +13,8 @@ const NavigationBar = ({ username }) => {
           <>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-              <Nav id="navbar-info" className="justify-content-end">
                 <div>Username: {username}</div>
-                <div>Group: ...</div>
-              </Nav>
+                <div>Group: {group}</div>
             </Navbar.Collapse>
           </>
         }

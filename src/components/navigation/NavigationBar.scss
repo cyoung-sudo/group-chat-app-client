@@ -1,10 +1,31 @@
 #navbar {
   height: var(--navbar-height);
+  background-color: var(--theme-color);
+  button:focus {
+    box-shadow: none;
+  }
 }
 
-#navbar-info {
+#basic-navbar-nav {
+  z-index: 10;
+  background-color: var(--theme-color);
   > div {
-    margin-left: 1rem;
+    max-width: 90vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+    padding: 0.7rem;
     font-weight: 300;
   }
 }
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #basic-navbar-nav {
+    > div {
+      max-width: 20vw;
+    }
+  }
+}
+/* ----- /Breakpoints ----- */
