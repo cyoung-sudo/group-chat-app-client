@@ -1,6 +1,8 @@
 import './App.scss';
 // React
 import { useState } from "react";
+// Sockets
+import { io } from "socket.io-client";
 // Components
 import Container from 'react-bootstrap/Container';
 import NavigationBar from "./components/navigation/NavigationBar";
@@ -8,6 +10,8 @@ import UsernameForm from "./components/forms/UsernameForm";
 import MessagesDisplay from "./components/displays/MessagesDisplay";
 import GroupForm from "./components/forms/GroupForm";
 import MessageForm from "./components/forms/MessageForm";
+
+const socket = io("http://localhost:5050/");
 
 function App() {
   const [username, setUsername] = useState(null);
