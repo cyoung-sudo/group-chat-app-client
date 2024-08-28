@@ -1,4 +1,5 @@
 import './App.scss';
+import axios from 'axios';
 // React
 import { useState } from "react";
 // Sockets
@@ -18,7 +19,15 @@ function App() {
   const [group, setGroup] = useState("");
 
   const submitUsername = name => {
-    setUsername(name);
+    axios.post("http://localhost:5050/api/user", {
+      username: name
+    })
+      .then(res => {
+        if(res.data.success) {
+          setUsername(name);
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   const submitGroup = grp => {
