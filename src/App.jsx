@@ -13,12 +13,8 @@ function App() {
   const [username, setUsername] = useState(null);
   const [group, setGroup] = useState("");
 
-  const submitGroup = e => {
-    e.preventDefault();
-    // Check max length
-    if(group.length <= 30) {
-      console.log(group)
-    }
+  const submitGroup = grp => {
+    setGroup(grp);
   }
 
   return (
@@ -47,9 +43,7 @@ function App() {
             </div>
 
             <div id="groupForm-wrapper">
-              <GroupForm 
-                setGroup={setGroup}
-                submitGroup={submitGroup}/>
+              <GroupForm submitGroup={submitGroup}/>
             </div>
 
             <div id="messageForm-wrapper">
