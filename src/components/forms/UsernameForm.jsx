@@ -5,16 +5,21 @@ import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const UsernameForm = ({ setUsername }) => {
+const UsernameForm = ({ submitUsername }) => {
   const [name, setName] = useState("");
 
-  const submitName = e => {
+  const checkName = e => {
     e.preventDefault();
-    setUsername(name);
+    // Check max length
+    if(name.length <= 20) {
+      submitUsername(name);
+    } else {
+      console.log("Name too long");
+    }
   }
 
   return (      
-    <Form id="usernameForm" onSubmit={submitName}>
+    <Form id="usernameForm" onSubmit={checkName}>
       <Form.Group>
         <Form.Control
           onChange={e => setName(e.target.value)}

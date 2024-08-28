@@ -17,6 +17,10 @@ function App() {
   const [username, setUsername] = useState(null);
   const [group, setGroup] = useState("");
 
+  const submitUsername = name => {
+    setUsername(name);
+  }
+
   const submitGroup = grp => {
     setGroup(grp);
   }
@@ -36,7 +40,7 @@ function App() {
               <h4>Join a group</h4>
               <h4>Start chatting</h4>
             </div>
-            <UsernameForm setUsername={setUsername}/>
+            <UsernameForm submitUsername={submitUsername}/>
           </div>
         }
 
