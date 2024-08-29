@@ -1,7 +1,7 @@
 import './App.scss';
 import axios from 'axios';
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Sockets
 import { io } from "socket.io-client";
 // Components
@@ -16,7 +16,22 @@ const socket = io("http://localhost:5050/");
 
 function App() {
   const [username, setUsername] = useState(null);
-  const [group, setGroup] = useState("");
+  const [group, setGroup] = useState("default");
+  const [message, setMessage] = useState("");
+  // Retrieved data
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    // Retrieve group messages on connection
+    socket.on("connect", () => {
+      socket.emit("join-group", group);
+    });
+
+    // Listen for message updates
+    socket.on("update-messages", data => {
+      setMessages(data);
+    });
+  }, [])
 
   const submitUsername = name => {
     axios.post("http://localhost:5050/api/user", {
@@ -28,11 +43,28 @@ function App() {
         }
       })
       .catch(err => console.log(err));
-  }
+  };
 
   const submitGroup = grp => {
+    socket.emit("join-group", grp);
     setGroup(grp);
-  }
+  };
+
+  const submitMessage = e => {
+    e.preventDefault();
+    // Check max length
+    if(message.length < 50) {
+      socket.emit("submit-message", {
+        username: username,
+        text: message,
+        group: group
+      });
+      // Reset input
+      setMessage("");
+    } else {
+      console.log("Message too long");
+    }
+  };
 
   return (
     <div id="app">
@@ -56,7 +88,7 @@ function App() {
         {username && 
           <>
             <div id="messagesDisplay-wrapper">
-              <MessagesDisplay/>
+              <MessagesDisplay messages={messages}/>
             </div>
 
             <div id="groupForm-wrapper">
@@ -64,7 +96,10 @@ function App() {
             </div>
 
             <div id="messageForm-wrapper">
-              <MessageForm/>
+              <MessageForm 
+                message={message}
+                setMessage={setMessage}
+                submitMessage={submitMessage}/>
             </div>
           </>
         }

@@ -2,40 +2,7 @@ import "./MessagesDisplay.scss";
 // Bootstrap
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const messages = [
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  },
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  },
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  },
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  },
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  },
-  {
-    username: "Bob",
-    text: "fososovoijiofjriofjo",
-    createdAt: "..."
-  }
-];
-
-const MessagesDisplay = () =>{
+const MessagesDisplay = ({ messages }) =>{
   return (
     <ListGroup id="messagesDisplay">
       {messages.map((message, idx) => (
