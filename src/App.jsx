@@ -12,7 +12,7 @@ import MessagesDisplay from "./components/displays/MessagesDisplay";
 import GroupForm from "./components/forms/GroupForm";
 import MessageForm from "./components/forms/MessageForm";
 
-const socket = io("http://localhost:5050/");
+const socket = io("https://group-chat-app-server.onrender.com/");
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -34,7 +34,7 @@ function App() {
   }, [])
 
   const submitUsername = name => {
-    axios.post("http://localhost:5050/api/user", {
+    axios.post("https://group-chat-app-server.onrender.com/api/user", {
       username: name
     })
       .then(res => {
