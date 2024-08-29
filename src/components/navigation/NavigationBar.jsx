@@ -2,12 +2,14 @@ import "./NavigationBar.scss";
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+// Icons
+import { IoIosChatbubbles } from "react-icons/io";
 
 const NavigationBar = ({ username, group }) => {
   return (
     <Navbar id="navbar" expand="lg" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand>Group Chat</Navbar.Brand>
+        <Navbar.Brand><span><IoIosChatbubbles/></span>Group Chat</Navbar.Brand>
         
         {username &&
           <>

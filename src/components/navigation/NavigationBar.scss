@@ -4,6 +4,11 @@
   button:focus {
     box-shadow: none;
   }
+  span {
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+  }
 }
 
 #basic-navbar-nav {
