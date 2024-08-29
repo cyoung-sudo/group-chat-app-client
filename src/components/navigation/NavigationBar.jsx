@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const NavigationBar = ({ username, group }) => {
   return (
-    <Navbar id="navbar" expand="lg">
+    <Navbar id="navbar" expand="lg" data-bs-theme="dark">
       <Container>
         <Navbar.Brand>Group Chat</Navbar.Brand>
         
