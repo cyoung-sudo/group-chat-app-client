@@ -20,10 +20,13 @@ function App() {
   const [message, setMessage] = useState("");
   // Retrieved data
   const [messages, setMessages] = useState([]);
+  // Loading status
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Retrieve group messages on connection
     socket.on("connect", () => {
+      setLoading(false);
       socket.emit("join-group", group);
     });
 
@@ -73,7 +76,7 @@ function App() {
         group={group}/>
       
       <Container id="app-content">
-        {!username &&
+        {!loading && !username &&
           <div id="usernameForm-wrapper">
             <div id="usernameForm-header">
               <h1>Messaging Made Easy</h1>
@@ -85,7 +88,7 @@ function App() {
           </div>
         }
 
-        {username && 
+        {!loading && username && 
           <>
             <div id="messagesDisplay-wrapper">
               <MessagesDisplay messages={messages}/>
@@ -102,6 +105,12 @@ function App() {
                 submitMessage={submitMessage}/>
             </div>
           </>
+        }
+
+        {loading &&
+          <div id="app-loading">
+            Loading...
+          </div>
         }
       </Container>     
     </div>
