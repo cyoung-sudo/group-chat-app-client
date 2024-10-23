@@ -109,7 +109,9 @@ function App() {
 
         {loading &&
           <div id="app-loading">
-            Loading...
+            <h1>Loading...</h1>
+            <p>Waking up server</p>
+            <p>Could take a minute :)</p>
           </div>
         }
       </Container>     

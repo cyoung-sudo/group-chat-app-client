@@ -31,10 +31,15 @@
 
 #app-loading {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: calc(100vh - var(--navbar-height));
-  font-size: 2rem;
+}
+
+#app-loading > p {
+  margin: 0;
+  font-size: 1rem;
   font-weight: 300;
   font-style: italic;
 }
